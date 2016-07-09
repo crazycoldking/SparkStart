@@ -1,0 +1,9 @@
+#ignore .metadata
+ .metadata
+ .gitignore
+ bin/
+ obj/
+ 
+#ignore obj and lib file
+
+*.[oa]
