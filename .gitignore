@@ -3,7 +3,9 @@
  .gitignore
  bin/
  obj/
- 
+Java/.metadata/
+Java/.recommenders/
 #ignore obj and lib file
 
 *.[oa]
+*.class
