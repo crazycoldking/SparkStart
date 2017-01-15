@@ -1,10 +1,9 @@
 #ignore .metadata
- .metadata
- .gitignore
+ .metadata/
  bin/
  obj/
-Java/.metadata/
-Java/.recommenders/
+.metadata/
+
 #ignore obj and lib file
 
 *.[oa]

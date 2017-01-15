@@ -10,13 +10,14 @@ public class StringUsage {
 		//StringCompare compare = new StringCompare();
 		//compare.TestStringCompare();
 		
-		/*AppendStringTest append = new AppendStringTest();
+		AppendStringTest append = new AppendStringTest();
 		append.StringAppendTest();
-		append.StringBufferAppendTest();*/
+		append.StringBufferAppendTest();
+		append.StringBuilderAppendTest();
 		
-		CommonOperation operation = new CommonOperation();
+		/*CommonOperation operation = new CommonOperation();
 		operation.GetSubtring();
-		operation.MergeStringTest();
+		operation.MergeStringTest();*/
 		
 		
 	}
