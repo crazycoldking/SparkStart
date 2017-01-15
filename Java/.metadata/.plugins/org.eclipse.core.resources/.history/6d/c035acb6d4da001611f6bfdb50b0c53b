@@ -1,0 +1,26 @@
+package com.java.study;
+
+import java.sql.Date;
+
+public class AppendStringTest {
+	
+	String[] strArr = new String[100];
+	
+	public void StringAppendTest() {
+		
+		String strResult = "";
+		Date startTime = new Date(0);
+		for (int i = 0; i < strArr.length; i++) {
+			strResult += strArr[i];
+		}
+		Date stopTime = new Date(0);
+		
+		System.out.println(strResult);
+	}
+	
+	public AppendStringTest() {
+		for (int i = 0; i < strArr.length; i++) {
+			strArr[i] = "test" + i + "\t";
+		}
+	}
+}
