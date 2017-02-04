@@ -1,0 +1,13 @@
+Java中String是一个特殊包装类数据，有两种创建形式：
+String s = "abc";
+String s = ne String("abc");
+第一种，先在栈中创建一个对String类的对象引用变量s，然后去查找“abc”是否被保存在字符串常量池中，如果没有则在栈中创建三个char型的值'a','b','c'，然后在堆中创建一个String对象object对象，它的值是刚才在栈中创建的三个char值组成的数组{‘a’,‘b’,‘c’}，接着这个String对象object被存进字符串常量池，最后，将s指向这个对象的地址，如果“abc”已经被保存在字符串常量池，则在字符串常量池中找到值为“abc”的对象object，然后将s指向这个对象的地址。
+
+第一种特点：JVM会自动根据栈中数据的实际情况来决定是否有必要创建新对象。
+
+第二种可以分解成两步1、String object = "abc"; 2、String s = new String(object); 第一步参考第一种创建方式，而第二步由于"abc"已经被创建并保存到字符串常量池中，因此jvm只会在堆中新创建一个String对象，它的值共享栈中已有的三个char型值。
+
+第二种特点：一概在堆中创建新对象，而不管其字符串值是否相等，是否有必要创建新对象。
+
+在讲字符串比较前，必须要了解==和equals的区别：
+因为java所有类都继承于Object基类，而Object中equals用==来实现，所以equals和==是一样的，都是比较对象地址，java api里的类大部分都重写了equals方法，包括基本数据类型的封装类、String类等。对于String类==用于比较两个String对象的地址，equals则用于比较两个String对象的内容(值)。

@@ -1,9 +1,10 @@
 #ignore .metadata
- .metadata
- .gitignore
+ .metadata/
  bin/
  obj/
- 
+.metadata/
+
 #ignore obj and lib file
 
 *.[oa]
+*.class

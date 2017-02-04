@@ -1,0 +1,16 @@
+常用的三角函数：
+Math.sin
+Math.cos
+Math.tan
+Math.atan
+Math.atan2
+
+常用的指数函数：
+Math.exp
+Math.log
+Math.log10
+
+常用的数学常量：
+Math.PI
+Math.E
+
