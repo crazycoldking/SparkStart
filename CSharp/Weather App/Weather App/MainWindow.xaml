@@ -1,0 +1,21 @@
+﻿<Window x:Class="Weather_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Weather App" Height="350" Width="525" Icon="weather_128.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="City:" FontSize="16" HorizontalAlignment="Left" Margin="8,10,2,2"></TextBlock>
+        <TextBox Grid.Row="0" x:Name="TbCity" HorizontalAlignment="Left" Width="200" Height="20" Margin="60,10,0,10"  KeyDown="TbWeatherDetail_KeyDown"></TextBox>
+        <Button Grid.Row="0" x:Name="BtnGetWeatherData" HorizontalAlignment="Left" Width="60" Height="20" Margin="280,0,0,0" Click="BtnGetWeatherData_Click" Visibility="Hidden">Get</Button>
+
+        <ScrollViewer Grid.Row="1" Height="270" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <TextBlock x:Name="TbWeatherDetail" Margin="10"></TextBlock>
+        </ScrollViewer>
+
+
+    </Grid>
+</Window>

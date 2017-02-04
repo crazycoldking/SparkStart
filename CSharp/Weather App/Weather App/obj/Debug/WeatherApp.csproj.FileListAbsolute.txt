@@ -1,0 +1,19 @@
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\bin\Debug\Weather App.exe.config
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\bin\Debug\Weather App.exe
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\bin\Debug\Weather App.pdb
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\obj\Debug\WeatherApp.csprojResolveAssemblyReference.cache
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\obj\Debug\MainWindow.baml
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\obj\Debug\MainWindow.g.cs
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\obj\Debug\App.g.cs
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\obj\Debug\Weather App_MarkupCompile.cache
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\obj\Debug\Weather App.g.resources
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\obj\Debug\Weather_App.Properties.Resources.resources
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\obj\Debug\WeatherApp.csproj.GenerateResource.Cache
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\obj\Debug\Weather App.exe
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\obj\Debug\Weather App.pdb
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\bin\Debug\GetWebData.dll
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\bin\Debug\GetWebData.pdb
+C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\Weather App\bin\Debug\Newtonsoft.Json.dll
+D:\GitRepo\Weather App\Weather App\bin\Debug\Weather App.exe.config
+D:\GitRepo\Weather App\Weather App\obj\Debug\Weather App.exe
+D:\GitRepo\Weather App\Weather App\obj\Debug\Weather App.pdb
