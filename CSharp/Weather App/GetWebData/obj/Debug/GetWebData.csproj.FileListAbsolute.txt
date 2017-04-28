@@ -1,6 +1,0 @@
-C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\GetWebData\bin\Debug\GetWebData.dll
-C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\GetWebData\bin\Debug\GetWebData.pdb
-C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\GetWebData\obj\Debug\GetWebData.csprojResolveAssemblyReference.cache
-C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\GetWebData\obj\Debug\GetWebData.dll
-C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\GetWebData\obj\Debug\GetWebData.pdb
-C:\Users\William Chen\documents\visual studio 2013\Projects\Weather App\GetWebData\bin\Debug\Newtonsoft.Json.dll
