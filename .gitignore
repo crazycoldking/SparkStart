@@ -1,7 +1,7 @@
 #ignore .metadata
  .metadata/
- bin/
- obj/
+ bin
+ obj
 .metadata/
 
 #ignore obj and lib file
