@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="myLoggerConfig" class="com.spring.coder.logging.MyLoggingConfig" init-method="initLogger">
+        <property name="rootLoggerLevel" value="FINE"/>
+        <property name="printedLoggerLevel" value="FINE"/>
+    </bean>
+
+    <bean id="info1" class="com.spring.coder.service.BasicInfo">
+        <property name="name" value="Jack Chou"/>
+        <property name="age" value="28"/>
+        <property name="position" value="Assistant Manager"/>
+    </bean>
+
+    <context:property-placeholder location="sample.properties"/>
+
+    <bean id="info2" class="com.spring.coder.service.BasicInfo">
+        <property name="name" value="${p.name}"/>
+        <property name="age" value="${p.age}"/>
+        <property name="position" value="${p.position}"/>
+    </bean>
+
+    <bean id="request1" class="com.spring.coder.service.PositionPromoteService">
+        <property name="basicInfo" ref="info1"/>
+    </bean>
+    <bean id="request2" class="com.spring.coder.service.SalaryPromoteService">
+        <property name="basicInfo" ref="info2"/>
+    </bean>
+
+    <bean id = "Jack" class="com.spring.coder.Programmer">
+        <constructor-arg ref="request1"/>
+    </bean>
+    <bean id = "Anderson" class="com.spring.coder.Manager">
+        <constructor-arg ref="request2"/>
+    </bean>
+
+
+</beans>
+
+
+
+
+
