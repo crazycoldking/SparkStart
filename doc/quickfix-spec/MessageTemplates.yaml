@@ -1,0 +1,108 @@
+Params:
+  any: "/(.)+/"
+  ClOrdID: '%generateOrderID()%'
+  Tag60: '%generateTsWithMilliseconds()%'
+  Tag52: '%generateTsWithSeconds()%'
+  Tag75: '%generateTsWithDate()%'
+  CompID: SIM2
+  SubID: SIM_UAT2
+  Account: 9907206
+StructuredFixMessageTemplates:
+  LOGON_REQ:
+  - 8: FIX.4.2
+  - 35: 
+  NEW_ORDER:
+  - '8': FIX.4.4    # BeginString
+  # - '9': BodyLength
+  - '35': D   # MsgType
+  - '50': $SubID  # SenderSubID
+  - '49': $CompID  # SenderCompID
+  # '34': MsgSeqNum
+  - '52': $Tag52  #SendingTime
+  - '40': 2   # OrdType
+  - '54': 2   # Side
+  - '55': 1101    # Symbol
+  - '11': TW-KGI-$    #ClOrdID
+  - '21': 3   # HandInst
+  - '60': $Tag60    # TransactTime
+  - '38': 4000    # OrderQty
+  - '44': 46.0    # Price
+  - '59': 0       # TIF
+  - '75': $Tag75
+  - '22': 5     # 
+  - '528': A    # OrderCapacity
+  - '1': $Account    # Account
+  # - '10': CheckSum
+  UPDATE_ORDER:
+  CANCEL_ORDER:
+
+  NEW_ORDER_ACK:
+  - '8': # BeginString
+  # - '9': BodyLength
+  - '35': 8 # MsgType
+  # '34': MsgSeqNum
+  - '56': SIM_UAT2  #
+  - '52': $Tag52  #SendingTime
+  - '57': $CompID   #TargetSubID
+  - '37': 
+  - '17': 
+  - '1': 
+  - '39': 
+  - '150': 
+  - '54': 
+  - '40': 
+  - '11': 
+  - '38': 
+  - '151': 
+  - '14': 
+  - '6': 
+  - '10244': 
+  - '44': 
+  - '58': 
+  - '60': 
+  - '10548': 
+  - '198': 
+  - '59': 
+  - '527': 
+  - '55': 
+  - '22': 
+  - '20': 
+  # - '10': CheckSum
+
+
+  ORDER_PART_FILL:
+  - '8': FIX.4.4    # BeginString
+  # - '9': BodyLength
+  # '34': MsgSeqNum
+  # - '10': CheckSum
+  ORDER_FULL_FILL:
+  - '8': FIX.4.4    # BeginString
+  # - '9': BodyLength
+  
+  # - '10': CheckSum
+  ORDER_CANCEL_RSP:
+  - '8': FIX.4.4    # BeginString
+  # - '9': BodyLength
+  
+  # - '10': CheckSum
+  ORDER_UPDATE_RSP:
+  - '8': FIX.4.4    # BeginString
+  # - '9': BodyLength
+  
+  # - '10': CheckSum
+  ORDER_REJECT_RSP:
+  - '8': FIX.4.4    # BeginString
+  # - '9': BodyLength
+  
+  # - '10': CheckSum
+
+  # Message Templates for Exchange Simulator
+
+  EX_NEW_ORDER_ACK:
+  EX_ORDER_PART_FILL:
+  EX_ORDER_FULL_FILL:
+  EX_ORDER_CANCEL_RSP:
+  EX_ORDER_UPDATE_RSP:
+  EX_ORDER_REJECT_RSP:
+
+
