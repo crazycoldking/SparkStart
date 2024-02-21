@@ -1,0 +1,39 @@
+from pymongo import MongoClient
+import os
+import datetime
+
+# 设置源数据库和目标数据库的连接信息
+source_uri = "mongodb://username:password@source_host:port/database"
+target_uri = "mongodb://username:password@target_host:port/database"
+
+# 设置备份的集合名称
+backup_collection = "backup"
+
+# 创建MongoDB客户端
+source_client = MongoClient(source_uri)
+target_client = MongoClient(target_uri)
+
+# 选择源数据库和目标数据库
+source_db = source_client['source_database']
+target_db = target_client['target_database']
+
+# 获取当前时间作为备份文件的名称
+backup_file_name = datetime.datetime.now().strftime("backup_%Y_%m_%d_%H_%M_%S.bson")
+backup_file_path = os.path.join('/path/to/backup/directory', backup_file_name)
+
+# 备份集合数据到BSON文件
+collection_to_backup = source_db[backup_collection]
+collection_to_backup.database.client.fsync()
+with open(backup_file_path, 'wb') as backup_file:
+    backup_file.write(collection_to_backup.database.client.fsync())
+
+# 将BSON文件恢复到目标数据库的备份集合中
+if target_db.list_collection_names().includes(backup_collection):
+    target_db[backup_collection].drop()
+with open(backup_file_path, 'rb') as backup_file:
+    target_db[backup_collection].insert_many(backup_file)
+
+# 清理BSON文件
+os.remove(backup_file_path)
+
+print(f"Backup successfully created and restored to the target database.")
