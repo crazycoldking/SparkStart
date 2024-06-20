@@ -1,0 +1,100 @@
+package utils;
+
+import com.google.gson.Gson;
+import pojo.Element;
+import pojo.Feature;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
+
+public class JsonResultProcessor {
+
+    public static Feature[] process(String jsonPath) throws IOException {
+        final List<String> strings = Files.readAllLines(Path.of(jsonPath));
+        final String json = String.join("", strings);
+        return new Gson().fromJson(json, Feature[].class);
+    }
+
+    public static String getJson(Feature[] features) {
+        return new Gson().toJson(features);
+    }
+
+    /*
+     * rerun features: results of rerun failed scenarios
+     * merge the rerun features with the original features
+     * replace the failed scenarios in the original features with the rerun features if they present in the rerun features
+     */
+    public static Feature[] merge(Feature[] rerunFeatures, Feature[] originalFeatures) {
+        for (Feature rerunFeature : rerunFeatures) {
+            // find the feature in the original features with same name
+            final List<Feature> list = Stream.of(originalFeatures).filter(originalFeature -> originalFeature.getName().equals(rerunFeature.getName())).toList();
+            if (list.isEmpty()) {
+                System.out.println("Feature not found: " + rerunFeature.getName());
+            } else if (list.size() == 1) {
+                System.out.println(">> Single feature found: " + rerunFeature.getName());
+                final Feature originalFeature = list.get(0);
+                merge(originalFeature, rerunFeature);
+            } else {
+                System.out.println(">> Duplicate features found: " + rerunFeature.getName());
+                // handle duplicate features, find the one with the same uri and name
+                final List<Feature> list1 = Arrays.stream(originalFeatures).filter(originalFeature -> (originalFeature.getUri().equals(rerunFeature.getUri()) && originalFeature.getName().equals(rerunFeature.getName()))).toList();
+                final Feature originalFeature = list1.get(0);
+                System.out.println("--> Get original feature with name and uri: " + originalFeature.getName() + " - " + originalFeature.getUri());
+                merge(originalFeature, rerunFeature);
+            }
+
+        }
+        return originalFeatures;
+    }
+
+    private static void merge(Feature originalFeature, Feature rerunFeature) {
+        // find the element in the original feature with same name
+        for (Element rerunElement : rerunFeature.getElements()) {
+            final Map<Integer, Element> map = new HashMap<>();
+            Element[] elements = originalFeature.getElements();
+            for (int i = 0; i < elements.length; i++) {
+                Element element1 = elements[i];
+                if (element1.getName().equals(rerunElement.getName())) {
+                    map.put(i, element1);
+                }
+            }
+            if (map.isEmpty()) {
+                System.out.println("Element not found: " + rerunElement.getName());
+            } else if (map.size() == 1) {
+                // get first key of the map
+                final int elementIndex = map.keySet().iterator().next();
+                final Element originalElement = map.values().iterator().next();
+                // replace the failed scenarios in the original feature with the rerun feature if they present in the rerun feature
+                if (rerunElement.isPassed()) {
+                    System.out.println("Replace element: " + originalElement.getName() + " - " + originalElement.getLine() + " with index " + elementIndex);
+                    originalFeature.getElements()[elementIndex] = rerunElement;
+                }
+
+            } else {
+                System.out.println("Duplicate element found: " + rerunElement.getName());
+                // handle duplicate elements, find the one with the same line and name
+                for (Map.Entry<Integer, Element> entry : map.entrySet()) {
+                    final int elementIndex = entry.getKey();
+                    final Element element1 = entry.getValue();
+                    if (element1.getLine() == rerunElement.getLine()) {
+                        if (rerunElement.isPassed()) {
+                            System.out.println("Replace element: " + element1.getName() + " - " + element1.getLine() + " with index " + elementIndex);
+                            originalFeature.getElements()[elementIndex] = rerunElement;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public static void writeJsonToFile(String json, String path) throws IOException {
+        // write json to file
+        Files.writeString(java.nio.file.Path.of(path), json);
+    }
+}
